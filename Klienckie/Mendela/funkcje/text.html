@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" name="" id="imie" value="Maciej                                 ">
+    <script>
+        const el = document.getElementById("imie");
+        setInterval(() => {
+            let imie = el.value;
+            const first = imie[0];
+            const last = imie.substr(1);
+            el.value = last + first;
+            console.log(last);
+        }, 300)
+
+    </script>
+</body>
+
+</html>

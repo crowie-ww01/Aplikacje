@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .main {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+
+<body>
+    <form action="/handleForm" method="POST" class="main">
+        <h1>01 - form, inputs,select</h1>
+        <input type="number" name="liczba1" id="liczba1">
+        <input type="number" name="liczba2" id="liczba2">
+        <select name="wybor" id="wybor">
+            <option value="suma" id="suma">suma</option>
+            <option value="różnica" id="różnica">różnica</option>
+            <option value="iloczyn" id="iloczyn">iloczyn</option>
+            <option value="iloraz" id="iloraz">iloraz</option>
+            <option value="wszystkie" id="wszystkie">wszystkie</option>
+
+        </select>
+        <button type="submit">submit</button>
+    </form>
+</body>
+
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .red {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+    <script>
+        const txt = prompt('wpisz zdanie: ');
+        const samo = ['a', ' o', 'i', 'u', 'ą', 'e', 'ę', 'y'];
+        for (let i = 0; i < txt.length; i++) {
+            if (samo.includes(txt[i].toLocaleLowerCase()))
+                document.write("<span class='red'>" + txt[i] + "</span>");
+            else
+                document.write(txt[i]);
+        }
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

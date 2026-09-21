@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        /*
+        let potega = function (p1, st) {
+            return p1 ** st
+        }
+        const w = potega(10, 2);
+        console.log(w);
+
+        kawka("La Va");
+        kawka("X");
+        kawka("Y");
+
+        const strzala = (p1, p2, p3) => {
+            console.log(p1, p2, p3);
+        }
+        strzala(1, 2, 3);
+
+
+        function kawka(rodzaj) { // hoisting!
+            console.log(arguments, arguments[0]);
+            // ....
+            console.log("kawka rodzaju", rodzaj);
+        }
+        */
+
+        /*
+        let z1 = 6; // let / const / var
+        zmienna = "test"
+        console.log("Z:", z1, zmienna);
+        test();
+        //console.log(z2); // Uncaught ReferenceError: z2 is not defined
+        console.log(zmienna2);
+
+        function test() {
+            let z2 = "X";
+            zmienna2 = "z2"; // globalne!!!! window.zmienna2
+            console.log("W:", z1, z2, zmienna, zmienna2);
+        }
+            */
+
+
+
+
+    </script>
+</head>
+
+<body>
+    <div id="divek" class="klasa" style="color:red;">Maciej</div>
+    <div class="klasa">Maria</div>
+    <div class="klasa">Natka</div>
+    <form action="" name="f1"></form>
+    <form action=""></form>
+    <a href="lol.html">aaaa</a>
+    <img src="lol.jpg" />
+
+    <script>
+        /*
+        const el = document.querySelector(".klasa"); // CSS Selector
+        console.log(el); // dostep do dowlnego atrubtu -class
+        console.log(el.id);
+        console.log(el.className);
+        el.className = "a b c";
+        el.innerText = "<b>Fred</b>";
+        el.innerHTML = "<b>Fred</b>";
+        console.log(el.style.color)
+        el.style.color = "#dddddd";
+        el.style.backgroundColor = "blue"; // z-index zIndex
+        el.style["background-color"] = "yellow";
+
+        const els = document.querySelectorAll(".klasa");
+        console.log(els);
+        els[1].innerText = "Nadia";
+        //	document.getElementById("divek")
+        //	document.getElementsByClassName("klasa")
+        //	document.getElementsByTagName("div")
+        console.log(document.forms)
+        //	document.images
+        console.log(document.links)   // <a href=""> <area shape
+
+        // UwAGA
+        console.log(divek, f1);
+        // ok ale nie polecam!!!
+        // nie widsz czy to jest z DOM czy nie , moze to zmienna?
+        */
+        let f = () => console.log("plum");
+
+        const h = window.setTimeout(f, 1000); //czas w ms
+        clearTimeout(h);
+        setTimeout((p1, p2) => {
+            console.log(p1, p2);
+        }, 1000, 5, 6);
+        // asynchroniczne!!!!!
+        console.log("meta");
+        setInterval("f()", 1000);
+        // clearInterval
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #div01 {
+            height: 100px;
+            width: 100px;
+            background-color: blue;
+        }
+    </style>
+    <script src="libs/jp.js"></script>
+    <script>
+        $("dokument").ready(function () {
+            console.log("Hello wrold!!")
+            $("#bt1").on("click", function () {
+                console.log("klik")
+                let decyzja = confirm("Czy na pewno chcesz kontynuować?")
+                // alert(decyzja);
+                // alert(decyzja ? "Potwierdzono!" : "Anulowano!");
+                if (decyzja) {
+                    alert("Potwierdzono!"); // Tekst po kliknięciu OK
+                } else {
+                    alert("Anulowano!");    // Tekst po kliknięciu Cancel
+                }
+            })
+            $("#bt2").on("click", function () {
+                $("#div01")
+                    .css("background", "#ff0000")
+                    .css("width", 400)
+                    .css("height", 400)
+                    .html("<b>OOO</b>")
+            })
+            $("#bt3").on("click", function () {
+                $("#bt2").off("click")
+
+            })
+        })
+    </script>
+</head>
+
+<body>
+    <button id="bt1">confirm</button>
+    <button id="bt2">style</button>
+    <div id="div01"></div>
+    <button id="bt3">clear</button>
+
+</body>
+
+</html>

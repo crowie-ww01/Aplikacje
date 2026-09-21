@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        let arr = prompt("wpisz tablice: ", '[1,2,3,4,5,6,"x"]');
+        arr = eval(arr);
+        let todo;
+        do {
+            console.log(arr);
+            todo = prompt("Wpisz operacje l/pX", "l12");
+            const direction = todo[0];
+            const counter = todo.substr(1);
+            console.log(direction, counter);
+            if (direction == "l") {
+                console.log(arr)
+                for (let i = 0; i < counter; i++) {
+                    arr.push(arr.shift());
+                    console.log(arr);
+                }
+            }
+        } while (todo != 'k')
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

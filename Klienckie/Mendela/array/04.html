@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        const txt = //prompt('wpisz tekst', 
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer a imperdiet lorem. Proin nec ornare tortor. Nulla nec imperdiet sem. Vestibulum consectetur tempus nulla, non aliquam ipsum malesuada ac. Donec posuere, eros id molestie sodales, nulla tellus tincidunt diam, eu ornare dolor massa blandit massa. Vestibulum et tellus eros. Nam pulvinar interdum pretium. Vivamus gravida porttitor metus ut bibendum. Duis facilisis eget quam vel iaculis. Praesent ut nisi id mauris mattis auctor. Proin fermentum ante eget sollicitudin rhoncus. Donec imperdiet sit amet est sit amet bibendum. Quisque sollicitudin, turpis sit amet fermentum volutpat, tellus nulla fermentum ipsum, ac commodo mauris lectus in turpis. Donec a sagittis mauris. In eu volutpat erat. Cras ullamcorper placerat rhoncus. Praesent dictum at eros ac commodo. Donec fringilla justo eu vehicula commodo. Ut in magna elit. Etiam eu accumsan eros. Aliquam bibendum mollis massa sed volutpat. Nullam et semper augue. Curabitur semper nunc eu dapibus iaculis. Phasellus ullamcorper dapibus purus non dignissim. Quisque tincidunt diam eu suscipit sodales. Aliquam erat volutpat. Vestibulum leo lorem, consectetur eu rutrum eget, ultricies non libero. Proin risus purus, pharetra et magna sit amet, dictum varius arcu. Ut mattis vitae massa ut feugiat. Morbi porttitor ullamcorper orci, eu placerat erat viverra ut. Morbi maximus porta tortor, at consectetur risus accumsan quis. Curabitur tristique arcu est. Donec semper semper eros, vitae vestibulum nunc ultricies a. Interdum et malesuada fames ac ante ipsum primis in faucibus. Integer diam purus, vestibulum maximus nisl dictum, aliquam rhoncus orci. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Praesent erat lectus, vestibulum id quam at, vestibulum luctus dui. Vestibulum in ullamcorper justo. Integer auctor urna magna, id luctus ipsum aliquet et. Suspendisse facilisis consectetur lorem ullamcorper dignissim. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nunc risus neque, volutpat eget eros non, laoreet fringilla ligula. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Fusce bibendum eros eu vulputate vulputate. Etiam varius velit vel placerat commodo. Pellentesque malesuada commodo scelerisque. Duis eget vestibulum nisl. Fusce eu fringilla lectus. Maecenas a tellus ante. Integer eget elementum enim. Praesent et mi metus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Praesent pellentesque tortor quis tincidunt dictum. Donec bibendum sodales metus quis pulvinar. Vivamus elementum malesuada massa, a tempus est efficitur sit amet. Nam velit neque, vulputate ac erat vitae, efficitur tristique odio. Aliquam maximus venenatis arcu, at egestas ante porta vitae. Vestibulum accumsan ligula a eleifend sollicitudin. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nulla in magna id lectus sollicitudin placerat tempor non dui."//);
+        let slowa = txt.split(" ");
+        let znalezione = {};
+
+        for (let slowo of slowa) {
+            let modified = slowo
+                .toLocaleLowerCase()
+                .replace(",", "")
+                .replace(".", "")
+            if (znalezione[modified]) {
+                znalezione[modified]++
+            } else {
+                znalezione[modified] = 1
+            }
+        }
+        // console.log(znalezione)
+        // for (let slowo of Object.keys(znalezione)) {
+        //     document.write(`${slowo} - ${znalezione[slowo]}<br>`);
+        // }
+
+        let posortowane = Object.entries(znalezione).sort(function (a, b) {
+            return b[1] - a[1]
+        })
+        // for (let slowo of posortowane) { // slowo == ['lorem', 4]
+        //     document.write(`${slowo[0]} - ${slowo[1]}<br>`);
+        // }
+                    let colorNumber = 0
+            let colorText = ""
+        for (let i = 0; i < posortowane.length; i++) { // posortowane[i] == slowo == ['lorem', 4]
+
+            if (i % 5 == 0) {
+                colorNumber = Math.round(Math.random() * 16777215)
+                colorText = "#" + colorNumber.toString(16).padStart(6, "0")
+            }
+            document.write(`<span style = 'background-color:${colorText};'>${posortowane[i][0]} - ${posortowane[i][1]}</span><br>`);
+        }
+        // let znalezione = {
+        //     slowo: 6,
+        //     slowo2: 3,
+        // }
+    </script>
+</head>
+
+<body>
+</body>
+
+</html>

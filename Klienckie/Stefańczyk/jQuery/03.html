@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .main {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .gen {
+            background-color: rgb(201, 201, 201);
+            min-width: 800px;
+            min-height: 100px;
+            border-style: solid;
+            border-color: grey;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            /* border-radius: 50%; */
+            padding: 20px;
+
+        }
+
+        .choose {
+            /* border-radius: 30%;
+            border-color: grey;
+            border-style: solid;
+            border: 3px; */
+            background-color: rgb(230, 230, 230);
+            padding: 10px;
+            border-style: solid;
+            border-color: rgb(201, 201, 201);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .tile {
+            border-radius: 15%;
+            color: white;
+            text-align: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 15%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+        }
+
+        .tileChild {
+            border-radius: 15%;
+            color: white;
+            text-align: center;
+            width: 20px;
+            height: 20px;
+            border-radius: 15%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+        }
+
+        .content {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+    </style>
+</head>
+
+<body>
+</body>
+<div class="main">
+    <h1>03 - Generator kafelków, losowość cz2</h1>
+    <div class="choose">
+        Liczba kafelków:
+        <select name="" id="count">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+        </select>
+        <button id="bt-generate">Generuj kafelki</button>
+
+    </div>
+    <script src="libs/jp.js"></script>
+    <script>
+        $("dokument").ready(function () {
+            $("#bt-generate").on("click", function () {
+                let count = $("#count").val()
+                let value = 0
+                let parentColor = ""
+                $("#mainContainer").empty()
+                // const tiles = []
+                for (let i = 1; i <= (count); i++) {
+                    const tile = $("<div>")
+                    tile.addClass('tile')
+                    let colorNumber = Math.round(Math.random() * 16777215)
+                    let colorText = "#" + colorNumber.toString(16).padStart(6, "0")
+                    tile.css("background-color", colorText)
+
+
+                    tile.append(Math.round(Math.random() * 9) + 1)
+                    $("#mainContainer").append(tile)
+
+                    // $("#gen").append(tile.append(i))
+                    tile.on("click", function () {
+                        value = $(this).text()
+                        parentColor = $(this).css("background-color")
+
+                        console.log(parentColor)
+                        console.log(value)
+                        $("#result").empty()
+                        for (let j = 1; j <= (value); j++) {
+                            const tile = $("<div>")
+                            tile.addClass('tileChild')
+                            tile.css("background-color", parentColor)
+
+                            tile.append(j)
+                            $("#result").append(tile)
+                            tile.on("click", function () {
+                                $(this).remove()
+                            })
+
+                        }
+
+
+
+                    })
+
+                }
+
+            })
+        })
+    </script>
+    <div class="gen">
+        <div>Głowna Galeria</div>
+        <div id="mainContainer" class="content"></div>
+    </div>
+    <div class="gen" id="gen">
+        <div>Wynik z kliknięcia</div>
+        <div id="result" class="content"></div>
+
+    </div>
+</div>
+
+</html>

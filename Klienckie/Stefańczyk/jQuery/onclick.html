@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .main {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .gen {
+            background-color: rgb(201, 201, 201);
+            min-width: 1000px;
+            min-height: 100px;
+            border-style: solid;
+            border-color: grey;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            gap: 10px;
+            /* border-radius: 50%; */
+        }
+
+        .choose {
+            /* border-radius: 30%;
+            border-color: grey;
+            border-style: solid;
+            border: 3px; */
+            background-color: rgb(230, 230, 230);
+            width: 350px;
+            height: 50px;
+            border-style: solid;
+            border-radius: 10px;
+            border-color: rgb(201, 201, 201);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .square {
+            all: unset;
+            background-color: rgb(42, 81, 255);
+            width: 50px;
+            height: 50px;
+            border-radius: 15%;
+            color: white;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+</body>
+<div class="main">
+    <h1>T:Pętla for, dynamiczne tworzenie i usuwanie html-a, cz.1</h1>
+    <div class="choose">
+        <button id="bt-generate">Generuj elementy</button>
+        <button id="bt-remove">Usuń wszystkie</button>
+        <select name="" id="sel">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+        </select>
+    </div>
+    <script src="libs/jp.js"></script>
+    <script>
+        $("dokument").ready(function () {
+            // $("#sel").on("change", function () {
+            $("#bt-generate").on("click", function () {
+                let x = $("#sel").val()
+                console.log(x)
+                $("#gen").empty()
+                for (let i = 1; i <= x; i++) {
+                    console.log(i)
+                    const bt = $("<button class='square'>")
+                    // console.log(bt)
+                    $("#gen").append(bt.append(i))
+                    bt.on('click', function () {
+                        let y = confirm("Czy chcesz usunąć element?")
+                        if (y)
+                            bt.remove()
+                    })
+                }
+            })
+            $("#bt-remove").on("click", function () {
+                let y = confirm("Czy chcesz usunąć wszystko?")
+                if (y)
+                    $("#gen").empty()
+            })
+            // })
+
+
+        })
+    </script>
+
+    <div class="gen" id="gen"></div>
+</div>
+
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <img src="./interia_logo.jpg" alt="" width="100">
+    <script>
+        const el = document.getElementsByTagName("img")[0];
+        let w = el.width;
+        let flag = true;
+
+        setInterval(() => {
+            if (w >= 300 || w < 100) flag = !flag;
+            if (flag) w += 10; else w -= 10;
+            el.width = w;
+        }, 100)
+    </script>
+</body>
+
+</html>

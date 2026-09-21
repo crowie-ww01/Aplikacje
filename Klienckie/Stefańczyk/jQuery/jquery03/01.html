@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            text-align: center;
+        }
+
+        h1 {
+            margin: 0;
+            color: rgb(87, 164, 228);
+        }
+
+        .labyrinth {
+            background-color: rgb(91, 102, 122);
+            width: 235px;
+            height: 235px;
+            border-radius: 15px;
+            position: relative;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            align-items: center;
+            justify-content: center;
+            background-color: rgb(22, 28, 41);
+            padding: 50px;
+
+        }
+
+        .main {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            align-items: center;
+            justify-content: center;
+            background-color: rgb(53, 62, 80);
+            padding: 40px;
+            border-radius: 15px;
+        }
+
+        button {
+            all: unset;
+            width: 130px;
+            border-radius: 25px;
+            padding: 10px;
+            color: white;
+
+        }
+
+        .blue {
+            background-color: rgb(87, 164, 228);
+        }
+
+        .green {
+            background-color: green;
+        }
+
+        .red {
+            background-color: red;
+        }
+
+
+        .labElements {
+            height: 35px;
+            width: 35px;
+            background-color: rgb(185, 176, 176);
+            position: absolute;
+            top: 0;
+            left: 0;
+            border-radius: 5px;
+        }
+
+        .chosen {
+            background-color: orange;
+            height: 35px;
+            width: 35px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            border-radius: 5px;
+
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="main">
+        <div>
+            <h1>Labirynt - tablice obiektów</h1>
+        </div>
+        <div>
+            <button class="blue" id="start">START GRY</button>
+            <button class="green">RUCH GRACZA</button>
+            <button class="red" id="'reset">RESETUJ</button>
+        </div>
+        <div class="labyrinth" id="labyrinth">
+            <!-- <div>player 1</div>
+            <div>player 2</div> -->
+        </div>
+
+    </div>
+    <script src="../libs/jp.js"></script>
+    <script>
+        $(document).ready(function () {
+            let labyrinth = []
+            // let newPosition = { x: 10, y: 20 }
+            // .css("top", i * 50)
+            for (let j = 0; j < 5; j++) {
+                for (let i = 0; i < 5; i++) {
+                    const divEl = $(`<div class='labElements' id='divEl${i}${j}'>`).css("left", i * 50).css("top", j * 50)
+
+                    $("#labyrinth").append(divEl)
+
+                    $(`#divEl${i}${j}`).on("click", function () {
+                        $(this).removeClass("labElements")
+                        $(this).addClass("chosen")
+                    })
+                }
+            }
+            $("#start").on("click", function () {
+
+
+            })
+            $('#reset').on("click", function () {
+                $(".chosen").each(function () {
+                    $(this).removeClass("chosen")
+                    $(this).addClass("labElements")
+                })
+            })
+        })
+    </script>
+</body>
+
+</html>

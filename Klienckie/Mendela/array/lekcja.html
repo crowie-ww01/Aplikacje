@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        const imie = "Natalia";
+        console.log(imie.length); //7
+        console.log(imie.charAt(0), imie[0]); // N
+        console.log(imie.indexOf("a", 2)); // 3
+        console.log(imie.search("tal"));
+        console.log(imie.slice(2, 4)); // ta
+        // 2026-09-10 zamien - na .
+        console.log("2026-09-10".split("-"));
+        console.log("2026-09-10".split("-").join("."));
+        console.log("    xxxxxx       ".trim());
+
+
+        let arr = []
+        console.log(arr);
+        arr = [1, 2, "trzy"];
+        console.log(arr);
+        arr = [1, 2, ["x", "xxx"], "trzy"];
+        console.table(arr);
+        arr[0] = "aaa";
+        console.log(arr[2][1]);
+        arr = new Array(1, 2, new Array(3, 4));
+        console.log(arr);
+        // UWAGA!!!!
+        arr1 = [4]
+        console.log(arr1);
+        arr2 = new Array(4); // rozmiar tablicy!!!
+        console.log(arr2);
+        arr[10] = "x";
+        console.log(arr, arr[9]);
+        console.log([1, 2, 3].concat([4, 5]));
+
+        arr = [1, 2, 3, 4, 5];
+        const r = arr.splice(1, 2, "x"); // Array [ 2, 3 ] Array(4) [ 1, "x", 4, 5 ]
+        console.log(r, arr);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

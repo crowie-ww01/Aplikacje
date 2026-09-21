@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        document.write("<b>Witaj JavaScript</b><br>")
+
+    </script>
+    <style>
+        * {
+            font-family: monospace;
+        }
+
+        td {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>1.</h1>
+    <h3>1.1</h3>
+    <script>
+        let i = -22
+        while (i < 22) {
+            document.write(i + "<br>")
+            i++;
+        }
+    </script>
+    <h3>1.2</h3>
+    <script>
+        let a = 55
+        while (a > -15) {
+            document.write(a + " ")
+            a = a - 5;
+        }
+    </script>
+    <h3>1.3</h3>
+    <script>
+        let b = 40
+        while (b >= 10) {
+            document.write(b + " ")
+            b--;
+        }
+    </script>
+    <h3>1.4</h3>
+    <script>
+        let c = 25
+        while (c >= 15) {
+            document.write(c + " ")
+            c--;
+        }
+    </script>
+    <!-- <script>
+        for (let c = 25; c >= 15; c--) {
+            document.write(c + " ")
+        }
+    </script>
+    <br>
+    <script>
+        let cyfry = [4, 5, 6]
+        for (let cyfra of cyfry) {
+            document.write(cyfra + " ")
+        }
+    </script> -->
+    <h1>2.</h1>
+    <h3>2.1</h3>
+    <script>
+        for (let i = -40; i < 40; i++) {
+            if (i % 2 != 0) {
+                document.write(i + " ")
+            }
+        }
+    </script>
+    <h3>2.2</h3>
+    <script>
+        for (let i = -20; i < 20; i++) {
+            if (i % 2 == 0) {
+                document.write(i + " ")
+            }
+        }
+    </script>
+    <h3>2.3</h3>
+    <script>
+        for (let i = -100; i < 41; i++) {
+            if (i % 7 == 0) {
+                document.write(i + " ")
+            }
+        }
+    </script>
+    <h1>3.</h1>
+    <h3>3.a</h3>
+    <script>
+        let ile = 6
+        // let ile = parseInt(prompt("podaj liczbe"))
+        for (let i = 0; i < ile; i++) {
+            document.write("X")
+        }
+    </script>
+    <h3>3.b</h3>
+    <script>
+        document.write("<pre>")
+        for (let i = 0; i < ile; i++) {
+            document.write("X" + " ")
+        }
+        document.write("<br>")
+        for (let i = 0; i < ile - 2; i++) {
+            document.write("X" + " ".repeat(2 * ile - 3) + "X" + " <br>")
+        }
+        for (let i = 0; i < ile; i++) {
+            document.write("X" + " ")
+        }
+        document.write("</pre>")
+    </script>
+    <h3>3.c</h3>
+    <script>
+        document.write("<pre>")
+        document.write(" ".repeat(ile - 1) + "X<br>")
+        for (let i = 0; i < (ile - 2); i++) {
+            document.write(" ".repeat(ile - i - 2) + "X" + " ".repeat(i) + "X<br>")
+        }
+        document.write("X".repeat(ile))
+        document.write("</pre>")
+    </script>
+    <h3>3.d</h3>
+    <script>
+        for (let i = 0; i < ile; i++) {
+            for (let j = 0; j <= i; j++) {
+                document.write(j + 1)
+            }
+            document.write("<br>")
+        }
+    </script>
+    <h3>3.e</h3>
+    <script>
+        for (let i = 0; i < ile; i++) {
+            for (let j = 0; j <= i; j++) {
+                document.write(i + 1 - j)
+            }
+            document.write("<br>")
+        }
+    </script>
+    <h3>3.f</h3>
+    <!-- <script>
+        X X X X X X
+        X 1 2 3 4 X
+
+        (ile-2)*2+1
+        let ile = prompt("podaj liczbe")
+        for (let i = 0; i < ile; i++) {
+        }
+    </script>
+    <br>
+    <script>
+        let ile = prompt("podaj liczbe")
+        for (let i = 0; i < ile; i++) {
+        }
+    </script>
+    <br>
+    <script>
+        let ile = prompt("podaj liczbe")
+        for (let i = 0; i < ile; i++) {
+        }
+    </script> -->
+    <script>
+        let silnia = 1
+        for (let i = 1; i <= ile; i++) {
+            silnia = silnia * i
+        }
+        document.write(silnia)
+    </script>
+    <h3>3.g</h3>
+    <script>
+        let suma = 0
+        for (let i = 1; i <= ile; i++) {
+            if (i % 2 == 0)
+                suma += i
+        }
+        document.write(suma)
+    </script>
+    <!-- <h3>3.h</h3> -->
+    <!-- <script>
+        let suma2 = 0
+        for (let i = 0; i <= ile; i += 2) {
+            suma2 += i
+        }
+        document.write(suma2)
+    </script>
+    <br> -->
+    <!-- <script>
+        let liczba = parseInt(prompt("podaj liczbe"))
+        let l_pierwsza = true
+        for (let i = 2; i < liczba; i++) {
+            if (liczba % i == 0)
+                l_pierwsza = false
+        }
+        if (l_pierwsza == true)
+            alert("Jest liczbą pierwszą")
+        else
+            alert("Nie jest liczbą pierwszą")
+    </script>
+    <br> -->
+    <!-- <script>
+        let liczba = parseInt(prompt("podaj liczbe"))
+        let l_pierwsza = true
+        for (let i = 2; i < liczba; i++) {
+            if (liczba % i == 0) {
+                l_pierwsza = false
+                break
+            }
+        }
+        if (l_pierwsza)
+            alert("Jest liczbą pierwszą")
+        else
+            alert("Nie jest liczbą pierwszą")
+    </script> -->
+    <h3>3.i</h3>
+    <script>
+        let table = "<table>"
+        table += '<tr>'
+        table += `<th>X</th>`
+        for (let i = 1; i <= 10; i++) {
+            table += `<th>${i}</th>`
+        }
+        table += '</tr>'
+
+        for (let i = 1; i <= 10; i++) {
+            table += '<tr>'
+            table += `<th>${i}</th>`
+            for (let j = 1; j <= 10; j++) {
+                table += '<td>'
+                table += i * j
+                table += '</td>'
+            }
+
+            table += '</tr>'
+        }
+        table += "</table>"
+        console.log(table)
+        document.write(table)
+    </script>
+    <h1>4.</h1>
+    <!-- <script>
+        // let regon_text = (prompt("podaj numer regon"))
+        let regon_text = "23511332857188"
+        // let regon_text = '732065814'
+        document.write(regon_text.length)
+        let regon = parseInt(regon_text)
+        if (regon_text.length == 9) {
+            let last = parseInt(regon_text[8])
+            let suma = parseInt(regon_text[0]) * 8
+            suma += parseInt(regon_text[1]) * 9
+            suma += parseInt(regon_text[2]) * 2
+            suma += parseInt(regon_text[3]) * 3
+            suma += parseInt(regon_text[4]) * 4
+            suma += parseInt(regon_text[5]) * 5
+            suma += parseInt(regon_text[6]) * 6
+            suma += parseInt(regon_text[7]) * 7
+            if (suma % 11 == last) {
+                alert("Numer REGON poprawny")
+            }
+            else if (suma % 11 == 10) {
+                if (last == 0) {
+                    alert("Numer REGON poprawny")
+                }
+                else {
+                    alert("Numer REGON nieprawidłowy")
+                }
+            }
+            else {
+                alert("Numer REGON nieprawidłowy")
+            }
+        }
+        else if (regon_text.length == 14) {
+            let last = parseInt(regon_text[8])
+            let suma = parseInt(regon_text[0]) * 8
+            suma += parseInt(regon_text[1]) * 9
+            suma += parseInt(regon_text[2]) * 2
+            suma += parseInt(regon_text[3]) * 3
+            suma += parseInt(regon_text[4]) * 4
+            suma += parseInt(regon_text[5]) * 5
+            suma += parseInt(regon_text[6]) * 6
+            suma += parseInt(regon_text[7]) * 7
+            if (suma % 11 == last) {
+                let last14 = parseInt(regon_text[13])
+                let suma14 = parseInt(regon_text[0]) * 2
+                suma14 += parseInt(regon_text[1]) * 4
+                suma14 += parseInt(regon_text[2]) * 8
+                suma14 += parseInt(regon_text[3]) * 5
+                suma14 += parseInt(regon_text[4]) * 0
+                suma14 += parseInt(regon_text[5]) * 9
+                suma14 += parseInt(regon_text[6]) * 7
+                suma14 += parseInt(regon_text[7]) * 3
+                suma14 += parseInt(regon_text[8]) * 6
+                suma14 += parseInt(regon_text[9]) * 1
+                suma14 += parseInt(regon_text[10]) * 2
+                suma14 += parseInt(regon_text[11]) * 4
+                suma14 += parseInt(regon_text[12]) * 8
+                if (suma14 % 11 == last14) {
+                    alert("Numer REGON poprawny")
+                }
+                else {
+                    alert("Numer REGON nieprawidłowy")
+                }
+            }
+            else if (suma % 11 == 10) {
+                let last14 = parseInt(regon_text[13])
+                let suma14 = parseInt(regon_text[0]) * 2
+                suma14 += parseInt(regon_text[1]) * 4
+                suma14 += parseInt(regon_text[2]) * 8
+                suma14 += parseInt(regon_text[3]) * 5
+                suma14 += parseInt(regon_text[4]) * 0
+                suma14 += parseInt(regon_text[5]) * 9
+                suma14 += parseInt(regon_text[6]) * 7
+                suma14 += parseInt(regon_text[7]) * 3
+                suma14 += parseInt(regon_text[8]) * 6
+                suma14 += parseInt(regon_text[9]) * 1
+                suma14 += parseInt(regon_text[10]) * 2
+                suma14 += parseInt(regon_text[11]) * 4
+                suma14 += parseInt(regon_text[12]) * 8
+                if (suma14 % 11 == last14) {
+                    alert("Numer REGON poprawny")
+                }
+                else {
+                    alert("Numer REGON nieprawidłowy")
+                }
+            }
+            else {
+                alert("Numer REGON nieprawidłowy")
+            }
+        }
+        else {
+            alert("Numer REGON nieprawidłowy")
+        }
+
+    </script> -->
+    <script>
+        // let regon_text = (prompt("podaj numer regon"))
+        let regon_text = "23511332857188"
+        // let regon_text = '732065814'
+        document.write(regon_text.length)
+        let regon = parseInt(regon_text)
+        let digit9 = parseInt(regon_text[8])
+        let suma_regon = parseInt(regon_text[0]) * 8
+        suma_regon += parseInt(regon_text[1]) * 9
+        suma_regon += parseInt(regon_text[2]) * 2
+        suma_regon += parseInt(regon_text[3]) * 3
+        suma_regon += parseInt(regon_text[4]) * 4
+        suma_regon += parseInt(regon_text[5]) * 5
+        suma_regon += parseInt(regon_text[6]) * 6
+        suma_regon += parseInt(regon_text[7]) * 7
+        if (regon_text.length == 9) {
+            if (suma_regon % 11 == digit9 || (suma_regon % 11 == 10 && digit9 == 0)) {
+                alert("Numer REGON poprawny")
+            } else {
+                alert("Numer REGON nieprawidłowy")
+            }
+        } else if (regon_text.length == 14) {
+            if (suma_regon % 11 == digit9 || (suma_regon % 11 == 10 && digit9 == 0)) {
+                let digit14 = parseInt(regon_text[13])
+                let suma14 = parseInt(regon_text[0]) * 2
+                suma14 += parseInt(regon_text[1]) * 4
+                suma14 += parseInt(regon_text[2]) * 8
+                suma14 += parseInt(regon_text[3]) * 5
+                suma14 += parseInt(regon_text[4]) * 0
+                suma14 += parseInt(regon_text[5]) * 9
+                suma14 += parseInt(regon_text[6]) * 7
+                suma14 += parseInt(regon_text[7]) * 3
+                suma14 += parseInt(regon_text[8]) * 6
+                suma14 += parseInt(regon_text[9]) * 1
+                suma14 += parseInt(regon_text[10]) * 2
+                suma14 += parseInt(regon_text[11]) * 4
+                suma14 += parseInt(regon_text[12]) * 8
+                if (suma14 % 11 == digit14 || (suma14 % 11 == 10 && digit14 == 0)) {
+                    alert("Numer REGON poprawny")
+                } else {
+                    alert("Numer REGON nieprawidłowy")
+                }
+            } else {
+                alert("Numer REGON nieprawidłowy")
+            }
+        } else {
+            alert("Numer REGON nieprawidłowy")
+        }
+
+    </script>
+</body>
+
+</html>

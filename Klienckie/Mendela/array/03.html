@@ -1,0 +1,26 @@
+bez interpunkcji sprawdz dlugosc
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        const txt = prompt('wpisz zdanie', "mą mą Mą mąka mą, mą. Mą mąka");
+        const searched = prompt("czego");
+        let arr = txt.split(" ");
+        console.log(arr);
+        for (let i = 0; i < arr.length; i++) {
+            if (arr[i].toLocaleLowerCase() == searched || arr[i].toLocaleLowerCase() == searched + "." || arr[i].toLocaleLowerCase() == searched + ",") {
+                arr[i] = "<u>" + arr[i].slice(0, searched.length) + "</u>" + arr[i].slice(searched.length, arr.length);
+            }
+        }
+        document.write(arr.join(" "));
+    </script>
+</head>
+
+<body>
+</body>
+
+</html>

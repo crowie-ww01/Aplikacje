@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+        }
+
+        #div01 {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 40px;
+        }
+
+        #div02 {
+            width: 400px;
+            height: 400px;
+            background-color: grey;
+            text-align: center;
+            padding: 30px;
+            font-size: 60px;
+
+        }
+
+        #button {
+            background-color: grey;
+            padding: 20px;
+            font-weight: bold;
+            border-radius: 5%;
+        }
+
+        #title {
+            color: blue;
+            font-size: 30px;
+            font-weight: bold;
+            width: 200px;
+            text-align: center;
+            margin: 0;
+        }
+    </style>
+    <script src="libs/jp.js"></script>
+    <script>
+        $("dokument").ready(function () {
+            $("#button").on("click", function () {
+                console.log($("#button").css("background-color"))
+                if ($("#button").css("background-color") == "rgb(255, 0, 0)") {
+                    $("#button").css("background-color", "grey")
+                    $("#div02").on("mouseenter", function () {
+                        $("#div02")
+                            .css("background-color", "grey")
+                            .css("color", "white")
+                            .html("")
+                    })
+                }
+
+                else {
+                    $("#button").css("background-color", "red")
+                    $("#div02").on("mouseenter", function () {
+                        $("#div02")
+                            .css("background-color", "red")
+                            .css("color", "white")
+                            .html("<b>text bold<br><i>text italic</i></b>")
+                    })
+                    $("#div02").on("mouseleave", function () {
+                        $("#div02")
+                            .css("background-color", "grey")
+                            .html("")
+                    })
+                }
+            })
+        })
+    </script>
+</head>
+
+<body>
+    <div id="div01">
+        <p id="title">T: jQuery - zdarzenia</p>
+        <button id="button">DODAJ/USUŃ</button>
+        <div id="div02"></div>
+    </div>
+</body>
+
+</html>

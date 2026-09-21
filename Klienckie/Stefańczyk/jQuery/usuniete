@@ -1,0 +1,32 @@
+9. zadania
+
+zadanie1 (losowanie):
+
+1. Po kliknięciu przycisku odczytaj liczbę kafelków, ich rozmiar oraz kolor bazowy z formularza.
+2. Opróżnij kontainer (.empty()), aby usunąć stare elementy.
+3. Utwórz opisaną liczbę kafelków <div> z klasą .tile, nadając im pobrany wymiar i kolor tła.
+4. Dla każdego kafelka podepnij kliknięcie, które resetuje kolor wszystkich poprzednio klikniętego (lub prościej pozostałych) do pierwotnego, a klikniętemu ($(this)) nadaje losowy kolor HEX.
+5. Dodaj kafelki do kontenera (.append()).
+
+zadanie 2 (losowanie cd):
+
+1. Po kliknięciu #generateButton odczytaj wybraną liczbę kafelków oraz opróżnij #mainContainer i #resultContainer.
+2. W pętli twórz kafelki z klasą .tile, nadając każdemu losową liczbę (1–10) oraz losowy kolor tła, po czym dodaj je do #mainContainer.
+3. Po kliknięciu w kafelek odczytaj jego wpisaną liczbę oraz kolor tła, wyczyść #resultContainer i wygeneruj w nim tyle nowych mniejszych kafelków (ponumerowanych od 1), ile wynosiła odczytana liczba, zachowując ten sam kolor tła.
+4. Dodaj usuwanie kafelków w wyniku: Do każdego mniejszego kafelka w #resultContainer podepnij kliknięcie, które usuwa go z DOM za pomocą $(this).remove().
+
+zadanie 3 (przemieszczanie):
+
+1. Po kliknięciu butona wyczyść kontener #mainContainer i w pętli utworzyć wybraną liczbę elementów <div> z klasą .tile/.element, ponumeruj je i dodaj do kontenera (.append()).
+2. Kliknij wybrany kafelek aby usunąć klasę .selected ze wszystkich elementów i dodać ją tylko do klikniętego.
+3. Dla przycisku #moveLeftButton pobierz zaznaczony element (.element.selected) i jego poprzednika (.prev()), a następnie przesuń zaznaczony przed niego (.before()), jeśli poprzednik istnieje.
+4. Przesuwanie w prawo: Dla przycisku #moveRightButton pobierz zaznaczony element i jego następny (.next()), a następnie przesuń go za następny (.after()), jeśli ten istnieje.
+5. Czyszczenie listy: Po kliknięciu #clearButton usuń wszystkie wygenerowane elementy z kontenera za pomocą .empty().
+
+zadanie 4 (zaawansowana struktura parents/children):
+
+1. Po kliknięciu #createButton wyczyść kontener i w pętli utwórz elementy rodziców (.parent-element) zawierające ich nazwy oraz przyciski dodawania (+) i usuwania (x).
+2. Kliknięcie przycisku (+) przy rodzicu tworzy kontener .child-container (jeśli jeszcze nie istnieje) i wstawia do niego nowy element .child-element z kolejnym numerem (wyliczonym na podstawie najwyższego istniejącego indeksu) oraz własnym przyciskiem usuwania.
+3. Kliknięcie (x) wewnątrz .child-element usuwa go, a jeśli był to ostatni element w .child-container, usuwa również cały pusty kontener podrzędny.
+4. Kliknięcie (x) przy rodzicu usuwa go z DOM wraz z przylegającym do niego kontenerem dzieci (.child-container).
+5. Przycisk #clearButton opróżnia #mainContainer ze wszystkich elementów za pomocą .empty().

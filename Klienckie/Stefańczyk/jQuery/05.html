@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* body {
+            /* font-family: ; */
+        /* } */
+
+        .main {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .gen {
+            background-color: rgb(201, 201, 201);
+            min-width: 1040px;
+            min-height: 50px;
+            border-style: solid;
+            border-color: grey;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 20px;
+            padding: 15px;
+
+        }
+
+        .choose {
+            /* border-radius: 30%;
+            border-color: grey;
+            border-style: solid;
+            border: 3px; */
+            background-color: rgb(230, 230, 230);
+            padding: 10px;
+            border-style: solid;
+            border-color: rgb(201, 201, 201);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            border-radius: 5px;
+
+        }
+
+
+        .parentElement {
+            all: unset;
+            width: 1000px;
+            border-radius: 5px;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+
+        }
+
+        .parentHeader {
+            all: unset;
+            background-color: rgb(0, 102, 255);
+            width: 1000px;
+            height: 10px;
+            border-radius: 5px;
+            color: white;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            padding: 20px;
+
+        }
+
+        .child {
+            all: unset;
+            background-color: rgb(255, 166, 0);
+            width: 940px;
+            height: 8px;
+            border-radius: 5px;
+            color: white;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            padding: 20px;
+
+        }
+
+        .childContainer {
+            width: 1000px;
+            min-height: 30px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 10px;
+
+        }
+
+        .selected {
+            all: unset;
+            background-color: orange;
+            width: 70px;
+            height: 70px;
+            border-radius: 15%;
+            color: white;
+            text-align: center;
+        }
+
+        .add {
+            width: 20px;
+            height: 20px;
+            background-color: #2c972c;
+            border-radius: 100%;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .remove {
+            width: 20px;
+            height: 20px;
+            background-color: rgb(190, 24, 24);
+            border-radius: 100%;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: none;
+
+        }
+
+        .text {
+            flex: 1;
+        }
+    </style>
+</head>
+
+<body>
+</body>
+<div class="main">
+    <h1>05 - Pętla for, dynamiczne tworzenie i usuwanie html-a, advanced</h1>
+    <div class="choose">
+        <button id="createButton">Utwórz menu</button>
+        <button id="removeButton">Usuń menu</button>
+
+        <select name="" id="sel">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+        </select>
+    </div>
+    <script src="libs/jp.js"></script>
+    <script>
+        $("dokument").ready(function () {
+            $("#createButton").on("click", function () {
+                $("#gen").empty()
+                let x = $("#sel").val()
+                for (let i = 1; i <= x; i++) {
+                    const parentElement = $("<div class='parentElement'>")
+
+                    const parentHeader = $("<div class='parentHeader'>")
+                    parentElement.append(parentHeader)
+
+                    const add = $("<div class='add'>")
+                    add.text("+")
+
+                    const remove = $("<div class='remove'>")
+                    remove.text("X")
+
+                    const headerText = $("<div class='text'>")
+                    headerText.text(`Parent ${i}`)
+
+                    parentHeader.append(headerText).append(add).append(remove)
+
+                    $("#gen").append(parentElement)
+
+                    remove.on("click", function () {
+                        parentElement.remove()
+                    })
+                    add.on("click", function () {
+                        const childContainer = $("<div class='childContainer'>")
+                        const child = $("<div class='child'>")
+
+                        if (!parentElement.children().hasClass("childContainer")) {
+                            parentElement.append(childContainer)
+                            childContainer.append(child)
+                        } else {
+                            childContainer.append(child)
+                        }
+                    })
+                }
+
+            })
+            $("#removeButton").on("click", function () {
+                $("#gen").empty()
+            })
+
+        })
+    </script>
+
+    <div class="gen" id="gen"></div>
+</div>
+
+</html>
