@@ -39,8 +39,23 @@ app.post("/handleForm", function (req, res) {
         res.send(wynik)
     }
     else if (req.body.wybor == "wszystkie") {
-
-        // res.send(wynik)
+        let wszystkie = []
+        wynik['message'] = "różnica elementów"
+        wynik['wynik'] = (req.body.liczba1 - req.body.liczba2)
+        wszystkie.push(wynik)
+        wynik = {}
+        wynik['message'] = "suma elementów"
+        wynik['wynik'] = (req.body.liczba1 + req.body.liczba2)
+        wszystkie.push(wynik)
+        wynik = {}
+        wynik['message'] = "iloraz elementów"
+        wynik['wynik'] = (req.body.liczba1 / req.body.liczba2)
+        wszystkie.push(wynik)
+        wynik = {}
+        wynik['message'] = "iloczyn"
+        wynik['wynik'] = (req.body.liczba1 * req.body.liczba2)
+        wszystkie.push(wynik)
+        res.send(wszystkie)
     }
 
 
