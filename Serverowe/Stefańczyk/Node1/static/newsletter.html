@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        form {
+            display: flex;
+            flex-direction: column;
+            width: 300px;
+        }
+    </style>
+</head>
+
+<body>
+    <form action="/handleform" method="post">
+        <h1>zad 06: newsletter</h1>
+        nick:
+        <input type="text" name="nick">
+        email:
+        <input type="email" name="email">
+        <input type="submit" value="Submit">
+        <a href="/removeUserBySelect ">usuń email z użyciem selecta</a>
+        <a href="/removeUserByRadio">usuń email z użyciem radio</a>
+        <a href="/removeUserByCheckboxes">usuń email-e z użyciem checkbox-ów</a>
+    </form>
+</body>
+
+</html>
