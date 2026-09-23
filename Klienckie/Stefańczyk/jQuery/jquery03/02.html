@@ -90,10 +90,13 @@
 
             for (let i = 0; i < data.products.prices.length; i++) {
                 // console.log(parseFloat(`${data.products.prices[i]}`.replace(/,/g, '.')))
-                suma += parseFloat(`${data.products.prices[i]}`.replace(/,/g, '.'))
+                suma += parseFloat(data.products.prices[i].replace(',', '.'))
             }
             suma = suma.toFixed(2).toString().replace(".", ",")
-            trSuma.append(td.append("suma")).append(td2).append(td3.append(suma))
+            trSuma
+                .append(td.append("suma"))
+                .append(td2)
+                .append(td3.append(suma))
 
         })
         // console.log(data.header.lps[0])
