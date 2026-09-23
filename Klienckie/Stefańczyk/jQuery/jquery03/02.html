@@ -1,0 +1,103 @@
+<!-- w 3 petlach, stringi przed liczeniem po zamianie na kropke, potem na przecinki wyswietlajac i znowu na kropke czy cos-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 40px;
+            color: white;
+        }
+
+        h1 {
+            color: rgb(87, 164, 228);
+
+        }
+
+        .flex {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 15px;
+        }
+
+        button {
+            all: unset;
+            border-radius: 20px;
+            background-color: rgb(87, 164, 228);
+            padding: 10px;
+            width: 130px;
+            text-align: center;
+        }
+
+        .main {
+            min-height: 200px;
+            width: 350px;
+            background-color: rgb(39, 59, 97);
+            border-radius: 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="flex">
+        <div class="flex main">
+            <h1>Tabela html - tablice</h1>
+            <button id="generate">Generuj tabele</button>
+            <table id="tablica"></table>
+
+        </div>
+    </div>
+    <script src="../libs/jp.js"></script>
+    <script>
+        const data = {
+            header: {
+                lps: ["lp", "cena", "produkt"],
+            },
+            products: {
+                prices: ["5,60", "3,23", "7,45", "10,00", "3,20", "9,22"],
+                names: ["chleb", "mąka", "masło", "kefir", "dżem", "inne"],
+            }
+        }
+        $("#generate").on("click", function () {
+
+            const tr = $("<tr id='caption'>")
+            $('#tablica').append(tr)
+            for (let i = 0; i < data.header.lps.length; i++) {
+                const td = $("<td>")
+                tr.append(td.append(data.header.lps[i]))
+            }
+
+            for (let i = 0; i < data.products.prices.length; i++) {
+                const tr = $("<tr>")
+                $('#tablica').append(tr)
+                const td = $("<td>")
+                const td2 = $("<td>")
+                const td3 = $("<td>")
+                tr.append(td.append(i + 1))
+                tr.append(td2.append(data.products.prices[i]))
+                tr.append(td3.append(data.products.names[i]))
+            }
+            const trSuma = $("<tr id='suma'>")
+            $('#tablica').append(trSuma)
+            const td = $("<td>")
+            const td2 = $("<td>")
+            const td3 = $("<td>")
+            let suma = 0
+
+            for (let i = 0; i < data.products.prices.length; i++) {
+                // console.log(parseFloat(`${data.products.prices[i]}`.replace(/,/g, '.')))
+                suma += parseFloat(`${data.products.prices[i]}`.replace(/,/g, '.'))
+            }
+            suma = suma.toFixed(2).toString().replace(".", ",")
+            trSuma.append(td.append("suma")).append(td2).append(td3.append(suma))
+
+        })
+        // console.log(data.header.lps[0])
+    </script>
+</body>
+
+</html>
