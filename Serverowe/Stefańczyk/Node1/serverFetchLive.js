@@ -10,18 +10,10 @@ app.use(express.json());
 
 app.get("/", function (req, res) {
     res.sendFile(path.join(__dirname, "./static/fetchLive.html"))
-
 })
 app.post("/logs", function (req, res) {
-    console.log(req.body)
-
-
-
-    res.send(JSON.stringify(allLogs))
-
-
-
-
+    const slider = req.body.suwak
+    res.send(slider)
 })
 app.use(express.static('static'))
 app.listen(PORT, function () {
