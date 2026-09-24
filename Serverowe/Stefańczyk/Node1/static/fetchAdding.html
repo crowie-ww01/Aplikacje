@@ -1,0 +1,74 @@
+!
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .main {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .klik {
+            background-color: rgb(37, 56, 92);
+            width: 60px;
+            height: 20px;
+            text-align: center;
+            color: white;
+            padding: 5px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <h1>03 - fetch, inputs,select, no form</h1>
+        <select name="imie" id="imie">
+            <option value="Jan" id="Jan">Jan</option>
+            <option value="Andrzej" id="Andrzej">Andrzej</option>
+        </select>
+        <select name="nazwisko" id="nazwisko">
+            <option value="Nowak" id="Nowak">Nowak</option>
+            <option value="Kowalski" id="Kowalski">Kowalski</option>
+        </select>
+        <div id="klik" class="klik">klik
+        </div>
+        <script>
+
+            document.getElementById("klik").onclick = function () {
+                // alert("kkk")
+                // klikam div-a
+                const data = JSON.stringify({
+                    a: document.getElementById("imie").value,
+                    b: document.getElementById("nazwisko").value,
+                })
+                const options = {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: data
+                };
+                fetch("/logs", options)
+                    .then(function (response) {
+                        return response.json();
+                    })
+                    .then(function (dataFromServer) {
+                        alert(JSON.stringify(dataFromServer, null, 5));
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
+            }
+        </script>
+    </div>
+</body>
+
+</html>

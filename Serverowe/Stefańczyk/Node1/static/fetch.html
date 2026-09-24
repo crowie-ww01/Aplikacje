@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .main {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .klik {
+            background-color: rgb(37, 56, 92);
+            width: 60px;
+            height: 20px;
+            text-align: center;
+            color: white;
+            padding: 5px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <h1>02 - fetch, inputs,select, no form</h1>
+        <input type="number" name="liczba1" id="liczba1">
+        <input type="number" name="liczba2" id="liczba2">
+        <select name="wybor" id="wybor">
+            <option value="suma" id="suma">suma</option>
+            <option value="różnica" id="różnica">różnica</option>
+            <option value="iloczyn" id="iloczyn">iloczyn</option>
+            <option value="iloraz" id="iloraz">iloraz</option>
+            <option value="wszystkie" id="wszystkie">wszystkie</option>
+
+        </select>
+        <div id="klik" class="klik">klik
+        </div>
+        <script>
+
+            document.getElementById("klik").onclick = function () {
+                // alert("kkk")
+                // klikam div-a
+                const data = JSON.stringify({
+                    a: document.getElementById("liczba1").value,
+                    b: document.getElementById("liczba2").value,
+                    c: document.getElementById("wybor").value,
+                })
+                const options = {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: data
+                };
+                fetch("/fetch", options)
+                    .then(function (response) {
+                        return response.json();
+                    })
+                    .then(function (dataFromServer) {
+                        alert(JSON.stringify(dataFromServer, null, 5));
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
+            }
+        </script>
+    </div>
+</body>
+
+</html>

@@ -12,6 +12,7 @@ app.get("/", function (req, res) {
 
 })
 app.post("/handleForm", function (req, res) {
+    res.header("content-type", "application/json")
     let wynik = {
         message: "",
         wynik: "",
@@ -21,22 +22,22 @@ app.post("/handleForm", function (req, res) {
         wynik['message'] = "różnica elementów"
         wynik['wynik'] = (req.body.liczba1 - req.body.liczba2)
         // console.log(wynik)
-        res.send(wynik)
+        res.send(JSON.stringify(wynik, null, 5))
     }
     else if (req.body.wybor == "suma") {
         wynik['message'] = "suma elementów"
-        wynik['wynik'] = (req.body.liczba1 + req.body.liczba2)
-        res.send(wynik)
+        wynik['wynik'] = (parseInt(req.body.liczba1) + parseInt(req.body.liczba2))
+        res.send(JSON.stringify(wynik, null, 5))
     }
     else if (req.body.wybor == "iloraz") {
         wynik['message'] = "iloraz elementów"
         wynik['wynik'] = (req.body.liczba1 / req.body.liczba2)
-        res.send(wynik)
+        res.send(JSON.stringify(wynik, null, 5))
     }
     else if (req.body.wybor == "iloczyn") {
         wynik['message'] = "iloczyn"
         wynik['wynik'] = (req.body.liczba1 * req.body.liczba2)
-        res.send(wynik)
+        res.send(JSON.stringify(wynik, null, 5))
     }
     else if (req.body.wybor == "wszystkie") {
         let wszystkie = []
@@ -45,7 +46,7 @@ app.post("/handleForm", function (req, res) {
         wszystkie.push(wynik)
         wynik = {}
         wynik['message'] = "suma elementów"
-        wynik['wynik'] = (req.body.liczba1 + req.body.liczba2)
+        wynik['wynik'] = (parseInt(req.body.liczba1) + parseInt(req.body.liczba2))
         wszystkie.push(wynik)
         wynik = {}
         wynik['message'] = "iloraz elementów"
@@ -55,7 +56,7 @@ app.post("/handleForm", function (req, res) {
         wynik['message'] = "iloczyn"
         wynik['wynik'] = (req.body.liczba1 * req.body.liczba2)
         wszystkie.push(wynik)
-        res.send(wszystkie)
+        res.send(JSON.stringify(wszystkie, null, 5))
     }
 
 
