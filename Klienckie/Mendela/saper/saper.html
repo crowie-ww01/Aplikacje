@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="main"></div>
+    <script>
+        let gameArray = []
+
+        function init() {
+            const container = document.createElement("div");
+            const txt = document.createTextNode("Wpisz rozmiar planszy N: ");
+            const input = document.createElement("input");
+            input.id = 'N'
+            const button = document.createElement("button");
+            button.innerText = "GENERUJ"
+            button.onclick = () => {
+                if (!isNaN(input.value))
+                    generateArray(input.value);
+                else alert("wpisz liczbe");
+
+            }
+            document.body.append(txt, input, button, container);
+        }
+        function generateArray(n) {
+            for (let i = 0; i < n; i++) {
+                gameArray[i] = []
+                for (let j = 0; j < n; j++) {
+                    gameArray[i][j] = 0
+                }
+            }
+            shuffleBombs(n, 5);
+        }
+        function shuffleBombs(n, b) {
+            let bombCounter = 0;
+            do {
+                const x = Math.floor(Math.random() * n);
+                const y = Math.floor(Math.random() * n);
+                if (gameArray[y][x] === 0) {
+                    gameArray[y][x] = 1;
+                    bombCounter++;
+                }
+            } while (bombCounter < b)
+            generateTable()
+        }
+        function generateTable() {
+            const table = document.createElement("table");
+            table.border = "1";
+            for (let i = 0; i < gameArray.length; i++) {
+                const tr = document.createElement("tr")
+                for (let j = 0; i < gameArray[i].length; j++) {
+                    const td = document.createElement("td");
+                    td.innerText = gameArray[j][i];
+                    td.onclick = function () {
+                        console.log(this);
+
+                    }
+                    tr.append(td);
+                }
+                table.append(tr)
+            }
+            document.getElementById("container").append(table)
+        }
+        init();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="a b c" style="color:red">Maria</div>
+    <script>
+        const el = document.getElementsByTagName("div")[0]
+        // el.className = "test"
+        el.classList.remove("b");
+
+        const div = document.createElement("div");
+        div.classList.add("klasa");
+        const span = document.createElement("span");
+        span.innerText = "Nadia";
+        div.append(span);
+
+        const img = document.createElement("img");
+        //div.append(img);
+        //div.prepend(img);
+
+        document.body.append(div);
+        //div.before(img);
+        div.after(img);
+
+        el.setAttribute("style", "background-color:pink");
+    </script>
+</body>
+
+</html>
