@@ -5,23 +5,45 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        textarea {
+            width: 300px;
+            height: 300px;
+            overflow: hidden;
+        }
+    </style>
 </head>
 
 <body>
-    <textarea name="tarea" cols="40" rows="20" id="">Maciej</textarea>
+    <textarea name="tarea" cols="40" rows="20" id="" style="white-space: pre-wrap;"></textarea>
     <script>
         const el = document.getElementsByName("tarea")[0];
-        let txt = el.innerHTML;
-        const arr = [];
-        for (let i = 0; i < 10; i++) {
-            const l = Math.floor(Math.random() * 100);
-            if (l <= 49) arr[i] = "X"; else arr[i] = " ";
-
-
-        }
-        el.innerHTML = "\n&#10;Nadia";
-
-        console.log(arr);
+        const alfabet = [
+            'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'
+        ];
+        let size = 30
+        let count = 1
+        setInterval(() => {
+            el.innerHTML = "\n" + el.innerHTML;
+            if (count <= size) {
+                for (let i = 0; i < 40; i++) {
+                    if (Math.random() > 0.05) {
+                        el.innerHTML = " " + el.innerHTML;
+                    }
+                    else {
+                        let character = alfabet[Math.floor(Math.random() * 52)];
+                        el.innerHTML = character + " " + el.innerHTML;
+                        i += 1;
+                    }
+                }
+            }
+            else {
+                if (count == size * 2) {
+                    count = 0
+                }
+            }
+            count += 1
+        }, 300)
     </script>
 </body>
 
