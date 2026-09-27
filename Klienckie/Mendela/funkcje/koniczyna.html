@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img {
+            width: 200px;
+            height: 200px;
+            position: absolute;
+        }
+    </style>
+</head>
+
+<body>
+    <img src="./𝑱𝒊𝒏𝒙.jpg" alt="" id="powder">
+    <div style="background-color: rgb(160, 15, 15); width: 8px; height: 8px; position: absolute; border-radius: 50%;"
+        id="center"></div>
+    <script>
+        const image = document.getElementById("powder");
+        const center = document.getElementById("center");
+        let x = 0;
+        let y = 0;
+        let angle = Math.PI;
+        const radius = 200;
+        let margin = 300;
+        let krok = 0;
+        let iPkt = 0;
+
+        const punkty = [
+            {
+                x: margin + radius,
+                y: margin,
+            },
+            {
+                x: margin + 2 * radius,
+                y: margin + radius,
+            },
+            {
+                x: margin + radius,
+                y: margin + 2 * radius,
+            },
+            {
+                x: margin,
+                y: margin + radius,
+            },
+        ]
+        // po 1 kończy w kącie 0 a po przeniesieniu środka ma być 90
+        // po 2 kończy w kącie 270/-90 a po przeniesieniu środka ma być 360/0
+        // po 3 kończy w kącie 180 a po przeniesieniu środka ma być 270
+        // po 4 kończy w kącie 90 a po przeniesieniu środka ma być 180
+        //
+        let middleX = punkty[0].x;
+        let middleY = punkty[0].y;
+        // kółeczko
+        // setInterval(() => {
+        //     image.style.left = x + 300 + "px";
+        //     image.style.top = y + 300 + "px";
+        //     y = Math.sin(angle) * radius;
+        //     x = Math.cos(angle) * radius;
+
+        //     angle += 2 * Math.PI / 400;
+        // }, 10)
+        setInterval(() => {
+            image.style.left = x + middleX - 100 + "px";
+            // 100 to pół obrazka
+            image.style.top = y + middleY - 100 + "px";
+            center.style.top = middleY + "px";
+            center.style.left = middleX + "px";
+            y = Math.sin(angle) * radius;
+            x = Math.cos(angle) * radius;
+
+            angle += 2 * Math.PI / 400;
+            krok++;
+            if (krok % 200 == 0) {
+                iPkt++
+                if (iPkt == 4) {
+                    iPkt = 0
+                }
+                console.log('k')
+                middleY = punkty[iPkt].y;
+                middleX = punkty[iPkt].x;
+                angle -= Math.PI / 2;
+
+            }
+        }, 10)
+    </script>
+</body>
+
+</html>
