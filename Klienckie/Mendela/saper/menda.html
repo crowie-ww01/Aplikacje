@@ -9,7 +9,12 @@
 
 <body>
     <script>
-        let gameArray = []
+        let gameArray = [
+            [0, 0, 0],
+            [0, 1, 0],
+            [0, 0, 0],
+
+        ]
 
         function init() {
             const container = document.createElement("div");
@@ -26,25 +31,25 @@
             }
             document.body.append(txt, input, button, container);
         }
-        function generateArray(n) {
-            for (let i = 0; i < n; i++) {
+        function generateArray(gridSize) {
+            for (let i = 0; i < gridSize; i++) {
                 gameArray[i] = []
-                for (let j = 0; j < n; j++) {
+                for (let j = 0; j < gridSize; j++) {
                     gameArray[i][j] = 0
                 }
             }
-            shuffleBombs(n, 5); // wartosc z inputa
+            shuffleBombs(gridSize, 5); // wartosc z inputa
         }
-        function shuffleBombs(n, b) {
-            let bombCounter = 0;
-            do {
-                const x = Math.floor(Math.random() * n);
-                const y = Math.floor(Math.random() * n);
+        function shuffleBombs(gridSize, bombCount) {
+            let bombsGenerated = 0;
+            while (bombsGenerated < bombCount) {
+                const x = Math.floor(Math.random() * gridSize);
+                const y = Math.floor(Math.random() * gridSize);
                 if (gameArray[y][x] == 0) {
                     gameArray[y][x] = 1;
-                    bombCounter++;
+                    bombsGenerated++;
                 }
-            } while (bombCounter < b)
+            }
             generateTable()
         }
         function generateTable() {

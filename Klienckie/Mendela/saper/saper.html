@@ -53,7 +53,7 @@
             table.border = "1";
             for (let i = 0; i < gameArray.length; i++) {
                 const tr = document.createElement("tr")
-                for (let j = 0; i < gameArray[i].length; j++) {
+                for (let j = 0; j < gameArray[i].length; j++) {
                     const td = document.createElement("td");
                     td.innerText = gameArray[j][i];
                     td.onclick = function () {
