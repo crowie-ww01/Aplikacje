@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 40px;
+            color: white;
+        }
+
+        h1 {
+            color: rgb(87, 164, 228);
+
+        }
+
+        .flex {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 15px;
+            gap: 15px;
+        }
+
+        button {
+            all: unset;
+            border-radius: 20px;
+            background-color: rgb(87, 164, 228);
+            padding: 10px;
+            width: 130px;
+            text-align: center;
+        }
+
+        .main {
+            min-height: 200px;
+            width: 350px;
+            background-color: rgb(39, 59, 97);
+            border-radius: 15px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <script src="../libs/jp.js"></script>
+    <div class="flex">
+        <div class="flex main">
+            <h1>Tabela html - koszyk</h1>
+            <select name="produkt" id="produkt">
+            </select>
+            <button id="dodaj">DODAJ</button>
+            <table id="tabela"></table>
+
+            <script>
+                $("dokument").ready(function () {
+                    const data = {
+                        header: {
+                            lps: ["lp", "produkt", "cena", "ilość", "razem"],
+                        },
+                        products: {
+                            prices: ["5,60", "3,23", "7,45", "10,00", "3,20", "9,22"],
+                            names: ["chleb", "mąka", "masło", "kefir", "dżem", "inne"],
+                        }
+                    }
+                    for (let i = 0; i < data.header.lps.length; i++) {
+                        const opcja = `<option value="${data.products.names[i]}" data-price="${data.products.prices[i]}">
+                            ${data.products.names[i]} (${data.products.prices[i]} zł)</option>`;
+                        $('#produkt').append(opcja);
+                    }
+                    let count = 0
+                    let calosc = 0
+                    const tr = `<tr id='names'></tr>`
+                    $("#tabela").append(tr)
+
+                    for (let i = 0; i < data.header.lps.length; i++) {
+                        const td = `<td value="${data.header.lps[i]}">${data.header.lps[i]}</td>`;
+                        $("#names").append(td);
+                    }
+                    const podsum = `<tr id='suma'><td>Suma</td><td id='wynik'></td></tr>`
+                    $("#tabela").append(podsum)
+                    $("#dodaj").on("click", function () {
+                        const produkt = `<tr></tr>`
+                        count++
+                        const id = `<td>${count}</td>`
+                        const nazwa = `<td>${$("#produkt").val()}</td>`
+                        const cena = `<td>${$("#produkt option:selected").data("price")}</td > `
+                        let koszt = $("#produkt option:selected").data("price")
+                        let istnieje = false
+                        for (let i = 0; i < data.products.prices.length; i++) {
+                            if ($("#produkt").val()) {
+
+                            }
+
+                        }
+                        const ilosc = `<td>${count}</td> `
+                        let ile = count
+                        let suma = (ile * koszt.replace(',', '.'))
+                        calosc += suma
+
+                        suma = suma.toFixed(2)
+                        const razem = `<td> ${suma.replace('.', ',')}</td>`
+                        $("#suma").before($(produkt).append(id, nazwa, cena, ilosc, razem));
+                        $("#wynik").html(calosc.toFixed(2))
+                    })
+                })
+            </script>
+        </div>
+    </div>
+</body>
+
+</html>
