@@ -25,22 +25,54 @@ app.post('/handleUpload', function (req, res) {
         // console.log(files.imagetoupload.path);
         // console.log(files.imagetoupload.path);
         console.log(files);
+        let wynik = [
+            data = { date: fields.date, },
+            image = { imagetoupload: [] }
 
-        const data = {
-            date: fields.date
-        }
-        // musze forem i pushem
-        const image = [
-            // imageupload: {
-
-            // },
-            // path: files.imagetoupload.path,
         ]
+        // const data = {
+        //     date: fields.date
+        // }
+        // musze forem i pushem
+        // wynik.push(data)
+
         for (let i = 0; i < files.imagetoupload.length; i++) {
-            image.push("a")
+            // path: files.imagetoupload[i].path
+            // size: files.imagetoupload[i].size,
+            let efekt = {
+                size: files.imagetoupload[i].size,
+                path: files.imagetoupload[i].path
+            }
+            wynik[1].imagetoupload[i] = efekt;
 
         }
-        const wynik = [data, image]
+        //OK JEST
+        // console.log(files);
+        // let wynik = {
+        //     date: fields.date,
+        //     imagetoupload: [
+
+        //     ]
+
+        // }
+        // // const data = {
+        // //     date: fields.date
+        // // }
+        // // musze forem i pushem
+        // // wynik.push(data)
+
+        // for (let i = 0; i < files.imagetoupload.length; i++) {
+        //     // path: files.imagetoupload[i].path
+        //     // size: files.imagetoupload[i].size,
+        //     let efekt = {
+        //         size: files.imagetoupload[i].size,
+        //         path: files.imagetoupload[i].path
+        //     }
+        //     wynik.imagetoupload[i] = efekt;
+
+        // }
+
+
         res.header("content-type", "application/json")
         res.send(JSON.stringify(wynik, null, 5))
 
