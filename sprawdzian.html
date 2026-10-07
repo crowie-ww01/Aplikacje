@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .grey {
+            background-color: rgb(203, 205, 224);
+            padding: 8px;
+        }
+
+        .main {
+            background-color: rgb(42, 42, 92);
+            color: white;
+            padding: 8px;
+
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Sprawdzian</h1>
+    <table id="main"></table>
+    <script src="libs/jq.js"></script>
+    <script>
+        $(document).ready(function () {
+            const data = {
+                columns: ["produkt", "cena / szt", "liczba", "wartość", "Rabat (zł)"],
+                products: [
+                    { price: "2.22", product: "kurtka" },
+                    { price: "3.34", product: "szalik" },
+                    { price: "4.44", product: "rękawiczki" },
+                    { price: "5.55", product: "buty" },
+                    { price: "6.66", product: "bluza" },
+                    { price: "7.77", product: "coś na wieczór" },
+                ]
+            }
+            const rabat = `<p>Wybierz rabat</p><select id="rabat"></select>`
+            $("#main").append(rabat)
+            for (let i = 0; i < 101; i++) {
+                const option = `<option value='0.${i}'>${i}%</option>`
+                $(`#rabat`).append(option)
+            }
+
+            const trTitle = "<tr id='trTitle'></tr>"
+            $("#main").append(trTitle)
+            for (let i = 0; i < data.columns.length; i++) {
+                const td = `<td class="main">${data.columns[i]}</td>`
+                $("#trTitle").append(td)
+            }
+            for (let i = 0; i < data.products.length; i++) {
+                const trMain = `<tr id='${data.products[i].product}'></tr>`
+                $("#main").append(trMain)
+                const tdProduct = `<td class='grey'>${data.products[i].product}</td>`
+                const tdCena = `<td>${data.products[i].price}</td>`
+                const tdLiczba = `<td><select class="ilosc"></select></td>`
+                for (let j = 1; j < 51; j++) {
+                    const option = `<option value='${j}'>${j}</option>`
+                    $(`.ilosc`).append(option)
+                }
+                const liczba = $(`.ilosc`).val()
+                const wartosc = liczba * data.products[i].price
+
+                const tdWartosc = `<td class='grey'>${wartosc}</td>`
+                const znizka = $("#rabat").val()
+                const tdRabat = `<td class='grey'>${wartosc * znizka}</td>`
+
+
+                $(`#${data.products[i].product}`).append(tdProduct).append(tdCena).append(tdLiczba).append(tdWartosc).append(tdRabat)
+
+            }
+
+
+
+            const trSum = "<tr id='trSum'></tr>"
+            const tdSum = "<td id='tdSum' class='main'>Suma</td>"
+
+            $("#main").append($(trSum).append(tdSum))
+            // for (let i = 0; i < data.columns.length; i++) {
+            //     console.log("test")
+            //     const td = `<td>${data.columns[i]}</td>`
+            //     $("#trSum").append(td)
+            // }
+
+        })
+    </script>
+</body>
+
+</html>

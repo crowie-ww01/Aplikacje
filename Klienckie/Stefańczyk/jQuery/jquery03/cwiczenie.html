@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <table border="1" id="main">
+        <tr name="'tr">
+            <td>Ilość produktów</td>
+            <td>Wybór produktów</td>
+            <td>Cena za kg</td>
+            <td>Cena</td>
+        </tr>
+
+
+    </table>
+    <script src="../libs/jp.js"></script>
+    <script>
+
+        $(document).ready(function () {
+            const produkt = {
+                prices: ["5", "3", "7", "10", "3", "9"],
+                names: ["chleb", "mąka", "masło", "kefir", "dżem"],
+            }
+            for (let j = 0; j < 5; j++) {
+                const tr = `<tr id='${j}'></tr>`
+
+                $("#main").append(tr)
+
+                    const td = `<td id='${i}'></td>`
+                    $(`#${j}`).append(td)
+
+                    //     // const select = `< select ></select> `
+                    //     // const option = `< option value = '${produkt.names[i]}' data - price='${produkt.prices[i]}' > ${produkt.names[i]}</option > `
+
+                    //     // price = `< td > ${$('#produkt option:selected').data("price")}</td >`
+                    //     // $(select).append(option)
+                    //     // $("#main").append(tr)
+
+            }
+            const end = ` <tr>
+                        <td>Suma zakupów</td>
+                        <td></td>
+                    </tr>`
+            $("#main").append(end)
+        })
+
+    </script>
+</body>
+
+</html>

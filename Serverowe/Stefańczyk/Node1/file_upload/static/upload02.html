@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+        }
+
+        .form {
+            display: flex;
+            flex-direction: column;
+            width: 400px;
+        }
+    </style>
+</head>
+
+<body>
+    <form enctype="multipart/form-data" method="POST" action="/handleUpload" class="form">
+        <h1>01:form => upload single file to server</h1>
+        <p>data</p>
+        <input type="date" name="date" id="date">
+        <p>nazwa</p>
+        <input type="text" name="name" id="name">
+        <p>zdjęcie</p>
+        <input type="file" multiple required accept="image/*" name="imagetoupload">
+        <br>
+        <input type="submit" name="" id="">
+    </form>
+</body>
+
+</html>

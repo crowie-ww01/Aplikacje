@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function test(d) {
+            console.log("test", d);
+            d.style.backgroundColor = "pink";
+        }
+
+        function init() {
+            console.log("init")
+            let els = document.getElementsByTagName("button")
+            console.log(els)
+            for (let i = 0; i < els.length; i++) {
+                /*
+                els[i].onclick = function () {
+                    console.log("OK");
+                    console.log(this, this.innerText);
+                }
+                    */
+                els[i].onclick = (e) => {
+                    console.log(e, this, e.target);
+                    e.target.innerText = "Natka";
+                }
+
+                els[i].onclick = (e) => console.log("lol");
+                // w tej technice nadpisujesz poprzednio dadane zdarzenie na tym samym typie (onclick)
+            }
+        }
+    </script>
+</head>
+
+<body onload="init()" oncontextmenu="event.preventDefault();test(this)">
+    <!--
+    <button onclick="console.log('lol',this)">1</button>
+    <button onclick="test(this)" onmouseover="console.log('over')">2</button>
+    <button onclick="test(this)" onmouseover="console.log('over')">3</button>
+    <button onclick="test(this)" onmouseover="console.log('over')">4</button>
+-->
+    <button>Maria</button>
+    <button>Nadia</button>
+
+
+    <div id="outer">
+        OUTER
+        <div id="inner">
+            INNER
+        </div>
+    </div>
+    <script>
+        const el = document.getElementById("outer");
+        el.addEventListener("click", function () {
+            console.log(this, "outer");
+        }, false);
+
+        const el2 = document.getElementById("inner");
+        el2.addEventListener("click", function (e) {
+            // Listener dopisuje kolejna funkcje na danym zdarzeniu
+            console.log(this, "inner");
+            e.stopPropagation();
+        }, false); // removeEventListener
+
+        el.addEventListener("click", function () {
+            console.log(this, "outerXXXX");
+        }, false);
+    </script>
+</body>
+
+</html>

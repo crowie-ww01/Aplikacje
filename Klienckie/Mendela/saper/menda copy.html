@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-
 </head>
 
 <body>
@@ -14,9 +13,7 @@
             [0, 0, 0],
             [0, 1, 0],
             [0, 0, 0],
-
         ]
-
         function init() {
             const container = document.createElement("div");
             container.id = "container";
@@ -39,7 +36,7 @@
                     gameArray[i][j] = 0
                 }
             }
-            shuffleBombs(gridSize, 5); // wartosc z inputa
+            shuffleBombs(gridSize, 20); // wartosc z inputa
         }
         function shuffleBombs(gridSize, bombCount) {
             let bombsGenerated = 0;
@@ -64,7 +61,18 @@
                     td.setAttribute("data-y", i);
                     td.innerText = gameArray[j][i];
                     td.onclick = function () {
+                        console.table(gameArray)
                         console.log(this.dataset.x, this.dataset.y); // <td data-x="" data-y=""
+                        this.style.backgroundColor = "pink";
+                        const x = parseInt(this.dataset.x)
+                        const y = parseInt(this.dataset.y)
+                        let counter = 0;
+                        for (let i = x - 1; i <= x + 1; i++) {
+                            for (let j = y - 1; j <= y + 1; j++) {
+                                if (gameArray[i]?.[j] == 1) counter++;
+                            }
+                        }
+                        this.innerText = counter;
                     }
                     tr.append(td);
                 }

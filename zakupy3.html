@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="libs/jq.js"></script>
+    <style>
+        button {
+            border-radius: 15px;
+            background-color: rgb(145, 25, 237);
+            color: white
+        }
+
+        div {
+            background-color: bisque;
+            height: 500px;
+        }
+
+        th,
+        td,
+        tr {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="div"></div>
+    <script>
+        $(document).ready(function () {
+            // Dane wyjściowe
+            const data = {
+                header: {
+                    lps: ["lp", "cena", "produkt"],
+                },
+                products: {
+                    prices: ["5,60", "3,23", "7,45", "10,00", "3,20", "9,22"],
+                    names: ["chleb", "mąka", "masło", "kefir", "dżem", "inne"]
+                }
+            };
+            let opcje = ''
+            for (i = 0; i < data.products.prices.length; i++) {
+                opcje += `<option value="${i}">${data.products.names[i]}(${data.products.prices[i]}zł)</option>`
+            }
+            let div = '<center>Zadanie - koszyk<br><button id="bt1">Generuj</button></center>'
+            let div2 = ` <center>
+                    <button id="bt2">Dodaj</button><br>
+                    <p>Produkt</p>
+                    <select id="select">${opcje}</select></center>
+                   `
+            $('#div').append(div)
+            let koszyk = []
+            $('#bt1').on('click', function () {
+                $('#div').append(div2)
+                $(this).hide()
+                let tabela = `<center>  <table id="tabela">
+        <thead>
+            <tr>
+                <td>lp</td>
+                <td>cena</td>
+                <td>produkt</td>
+                <td>ilość</td>
+                <td>razem</td>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+        <tfoot>
+            <td colspan=4>Suma</td>
+            <td id="suma"></td>
+        </tfoot>
+    </table> </center>`
+                $('#div').append(tabela)
+                $('#bt2').on('click', function () {
+
+
+                    let wybranyProdukt = $('#select').val()
+                    let produkt = data.products.names[wybranyProdukt]
+                    let cena = data.products.prices[wybranyProdukt].replace(",", ".")
+                    const szukany = koszyk.findIndex(item => item.produkt === produkt);
+                    if (szukany !== -1) {
+                        koszyk[szukany].ilosc += 1
+                    }
+                    else {
+                        koszyk.push(
+                            {
+                                produkt: produkt,
+                                cena: cena,
+                                ilosc: 1
+
+                            })
+
+                    }
+                    let wiersz = ''
+                    let suma = 0
+                    $('#tabela tbody').empty()
+                    for (i = 0; i < koszyk.length; i++) {
+                        let item = koszyk[i]
+                        razem = parseFloat(item.ilosc * parseFloat(item.cena))
+                        console.log(razem)
+                        suma += razem
+                        wiersz = `<tr class="wiersz">
+                            <td>${i + 1}</td>
+                            <td>${item.produkt}</td>
+                            <td>${parseFloat(item.cena).toFixed(2)}</td>
+                            <td>${item.ilosc}</td>
+                            <td>${(razem).toFixed(2)}</td>
+                            </tr>`
+                        $('#tabela tbody').append(wiersz)
+
+
+
+                    }
+                    $('#suma').text(suma.toFixed(2))
+
+
+
+                })
+
+            })
+
+        })
+
+    </script>
+
+</body>
+
+</html>
