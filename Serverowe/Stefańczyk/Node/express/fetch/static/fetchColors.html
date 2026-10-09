@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .main {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .square {
+            width: 200px;
+            height: 200px;
+            background-color: rgba(128, 128, 128, 0.5);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <h1>05 - colors (ranges), fetch</h1>
+        R:
+        <input type="range" id="red" min="0" max="255">
+        G:
+        <input type="range" id="green" min="0" max="255">
+        B:
+        <input type="range" id="blue" min="0" max="255">
+        A:
+        <input type="range" id="alfa" min="0" max="100">
+        <div class="square" name="'square" id="square">
+        </div>
+        <script>
+            document.getElementById("red").oninput = function () {
+                colorChange()
+            }
+            document.getElementById("green").oninput = function () {
+                colorChange()
+            }
+            document.getElementById("blue").oninput = function () {
+                colorChange()
+            }
+            document.getElementById("alfa").oninput = function () {
+                colorChange()
+            }
+            // document.getElementById("square").style.backgroundColor()
+            function colorChange() {
+                const data = JSON.stringify({
+                    red: document.getElementById("red").value,
+                    green: document.getElementById("green").value,
+                    blue: document.getElementById("blue").value,
+                    alfa: document.getElementById("alfa").value,
+
+                })
+                const options = {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: data
+                };
+                fetch("/fetch", options)
+                    .then(function (response) {
+                        return response.text();
+                    })
+                    .then(function (dataFromServer) {
+                        document.getElementById("square").style.background = dataFromServer;
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
+            }
+        </script>
+    </div>
+</body>
+
+</html>
+
+<!-- document.getElementById("green")).oninput = function (){
+
+ Koloruj()
+}
+
+document.getElementById("green2")).oninput = function (){
+
+ Koloruj()
+}
+
+
+function Koloruj(){
+
+ const data = JSON.stringify({
+                    red: document.getElementById("red").value,
+                    green: document.getElementById("green").value,
+                    blue: document.getElementById("blue").value,
+                    alfa: document.getElementById("alfa").value,
+
+                })
+                const options = {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: data
+                };
+                fetch("/fetch", options)
+                    .then(function (response) {
+                        return response.json();
+                    })
+                    .then(function (dataFromServer) {
+                        alert(JSON.stringify(dataFromServer, null, 5));
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
+
+} -->
