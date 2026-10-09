@@ -7,7 +7,7 @@ app.use(express.urlencoded({
     extended: true
 }));
 app.get("/", function (req, res) {
-    res.sendFile(path.join(__dirname, "../static/formularzPOST.html"))
+    res.sendFile(path.join(__dirname, "./static/formularzPOST.html"))
 })
 app.post("/handleForm", function (req, res) {
     console.log(req.body)

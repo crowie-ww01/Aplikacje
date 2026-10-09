@@ -7,7 +7,7 @@ app.use(express.urlencoded({
     extended: true
 }));
 app.get("/", function (req, res) {
-    res.sendFile(path.join(__dirname, "../static/formularzRadio.html"))
+    res.sendFile(path.join(__dirname, "./static/formularzRadio.html"))
 })
 app.post("/handleForm", function (req, res) {
     if (req.body.kolor && req.body.wielkosc && req.body.rozmiar && req.body.ile) {
