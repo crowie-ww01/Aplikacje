@@ -23,7 +23,7 @@
 <body>
     <h1>Sprawdzian</h1>
     <table id="main"></table>
-    <script src="libs/jq.js"></script>
+    <script src="libs/jp.js"></script>
     <script>
         $(document).ready(function () {
             const data = {
@@ -55,21 +55,36 @@
                 $("#main").append(trMain)
                 const tdProduct = `<td class='grey'>${data.products[i].product}</td>`
                 const tdCena = `<td>${data.products[i].price}</td>`
-                const tdLiczba = `<td><select class="ilosc"></select></td>`
-                for (let j = 1; j < 51; j++) {
-                    const option = `<option value='${j}'>${j}</option>`
-                    $(`.ilosc`).append(option)
-                }
+                // const tdLiczba = $(`<td></td>`)
+                // const select = $(`<select class="ilosc"></select>`)
+                // for (let j = 1; j < 51; j++) {
+                //     const option = `<option value='${j}'>${j}</option>`
+                //     select.append(option)
+                // }
+                // tdLiczba.append(select)
+                const tdLiczba = `<td><select class="ilosc" id="il${i}"></select></td>`
+
+                //                 const tdLiczba = `<td><select class="ilosc"></select></td>`
+                // for (let j = 1; j < 51; j++) {
+                //     const option = `<option value='${j}'>${j}</option>`
+                //     $(`.ilosc`).append(option)
+                // }
                 const liczba = $(`.ilosc`).val()
                 const wartosc = liczba * data.products[i].price
-
+                console.log(liczba, data.products[i].price)
                 const tdWartosc = `<td class='grey'>${wartosc}</td>`
                 const znizka = $("#rabat").val()
                 const tdRabat = `<td class='grey'>${wartosc * znizka}</td>`
 
 
                 $(`#${data.products[i].product}`).append(tdProduct).append(tdCena).append(tdLiczba).append(tdWartosc).append(tdRabat)
-
+                for (let j = 1; j < 51; j++) {
+                    const option = `<option value='${j}'>${j}</option>`
+                    $(`#il${i}`).append(option)
+                }
+                // const liczba2 = $(`#il${i}`).val()
+                // const wartosc2 = liczba2 * data.products[i].price
+                // console.log(liczba2, data.products[i].price)
             }
 
 

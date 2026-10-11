@@ -7,7 +7,7 @@ app.use(express.urlencoded({
     extended: true
 }));
 app.get("/", function (req, res) {
-    res.sendFile(path.join(__dirname, "../static/newsletter.html"))
+    res.sendFile(path.join(__dirname, "./static/newsletter.html"))
 })
 app.get("/removeUserBySelect", function (req, res) {
     let select = `<form action="/removeUser" method="post">
