@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            height: 100px;
+            width: 100px;
+            background-color: gray;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="1"></div>
+    <div id="2"></div>
+    <div id="3"></div>
+
+    <script>
+        for (let div of document.getElementsByTagName("div")) {
+            div.addEventListener("click", function () {
+                if (div.style.background == "") {
+                    color = `rgb(${Math.round(Math.random() * 255)}, ${Math.round(Math.random() * 255)}, ${Math.round(Math.random() * 255)})`
+                    div.style.background = color
+                }
+            })
+            div.addEventListener("dblclick", function () {
+                for (let div of document.getElementsByTagName("div")) {
+                    div.style.background = ""
+                }
+            })
+        }
+
+
+    </script>
+</body>
+
+</html>
