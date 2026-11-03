@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="kwadrat" style="width: 100px; height: 100px; background-color: aquamarine;"></div>
+    <br>
+    <button id="start">Start</button>
+    <button id="stop">Stop</button>
+    <input type="checkbox" name="" id="niesk">Obracaj w nieskończoność
+    <input type="number" style="width: 40px;" id="kat" value="15"> kąt
+    <script>
+
+        document.getElementById("start").addEventListener("click", function () {
+            document.getElementById("kwadrat").style.rotate = 0 + "deg";
+
+            let krok = 0
+            let interval = setInterval(obrot, 100);
+            function obrot() {
+                krok += Number(document.getElementById("kat").value)
+
+                if (krok > 360 && document.getElementById("niesk").checked == false) {
+                    document.getElementById("kwadrat").style.rotate = 0 + "deg";
+                    clearInterval(interval)
+                }
+                else {
+                    console.log(krok)
+                    document.getElementById("kwadrat").style.rotate = krok + "deg";
+                }
+            }
+            document.getElementById("stop").addEventListener("click", function () {
+                clearInterval(interval)
+            })
+
+        })
+
+    </script>
+</body>
+
+</html>
