@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            /* background-color: gold; */
+            border: 3px solid gold;
+            position: absolute;
+
+        }
+    </style>
+</head>
+
+<body>
+    <input type="number" name="" id="ilosc">
+    <button id="generuj">Generuj</button>
+
+    <script>
+        document.getElementById("generuj").addEventListener("click", function () {
+            let liczba = document.getElementById("ilosc").value
+            let squares = ""
+            for (let i = 0; i < liczba; i++) {
+                let size = Math.round(Math.random() * 90 + 10)
+                let top = Math.round(Math.random() * 500)
+                let left = Math.round(Math.random() * 500)
+
+                squares += `<div style="height:${size}px;width:${size}px;top:${top}px;left:${left}px;"></div>`
+            }
+            document.body.innerHTML += squares
+
+            let tab = document.getElementsByTagName("div")
+            for (let div of tab) {
+                div.addEventListener("click", function () {
+                    console.log("done")
+                    div.remove()
+                })
+            }
+        })
+    </script>
+</body>
+
+</html>
