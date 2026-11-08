@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .div {
+            border-radius: 50%;
+            border: 1px solid black;
+            position: absolute;
+        }
+
+        .kontener {
+            border: 1px solid black;
+            width: 400px;
+            height: 400px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="kontener" id="kontener"></div>
+    <script>
+        // +8
+        for (let i = 0; i < 10; i++) {
+            let radius = Math.round(Math.random() * 21 + 10)
+            let top = Math.round(Math.random() * (400 - 2 * radius) + 8)
+            let left = Math.round(Math.random() * (400 - 2 * radius) + 8)
+            // let top = Math.round(Math.random() * (400) + 8 - 2 * radius)
+            // let left = Math.round(Math.random() * 400 + 8 - 2 * radius)
+
+            const okrag = `<div class="div" style="height:${2 * radius}px; width:${2 * radius}px;top:${top}px;left:${left}px"></div>`
+            document.getElementById("kontener").innerHTML += okrag
+        }
+
+        let okregi = document.getElementsByClassName("div")
+        for (let div of okregi) {
+            div.addEventListener("click", function () {
+                console.log("done")
+                console.log(div.style.height)
+                // div.remove()
+                let y = parseInt(div.style.top)
+                setInterval(() => {
+                    if (y < 408 - parseInt(div.style.height)) {
+                        y += 1
+                        div.style.top = y + "px"
+                    }
+                    else {
+                        clearInterval()
+                    }
+                }, 5)
+            })
+        }
+    </script>
+</body>
+
+</html>
