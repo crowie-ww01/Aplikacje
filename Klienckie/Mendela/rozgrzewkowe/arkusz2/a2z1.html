@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <script>
+        let a = 0
+        let b = 1
+        let c = a + b
+        // function fiboAsc(N) {
+        //     console.log(a)
+        //     console.log(b)
+        //     for (let i = 0; i < N - 2; i++) {
+        //         console.log(c)
+        //         a = b
+        //         b = c
+        //         c = a + b
+        //     }
+
+        // }
+        // fiboAsc(6)
+        function fiboDesc(N) {
+            let fibo = [a, b, c]
+            for (let i = 0; i < N - 3; i++) {
+                a = b
+                b = c
+                c = a + b
+                fibo.push(c)
+            }
+            let wynik = []
+            for (let i = N - 1; i >= 0; i--) {
+                wynik.push(fibo[i])
+            }
+            console.log(wynik)
+        }
+        fiboDesc(6)
+    </script>
+</body>
+
+</html>
