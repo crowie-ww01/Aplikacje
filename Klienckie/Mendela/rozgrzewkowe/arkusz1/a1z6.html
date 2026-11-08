@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <script>
+        let txt = 'loremipsumblab12'
+        let tab = [txt]
+        console.log(txt)
+        let html = "<pre>"
+        function spiralEncrypt(text) {
+            let n = 0
+            while (n * n < text.length) {
+                n += 1
+            }
+            // html += `<p>`
+            for (let i = 0; i < n; i++) {
+                html += `${tab[0][i]}`
+            }
+            // html += `</p>`
+            html += `<br>`
+            for (let i = 0; i < n; i++) {
+                let last = text.length - i - 1
+                html += `${tab[0][last]}`
+                for (let j = 0; j < n - 2; j++) {
+                    html += `_`
+                }
+                let next = n + i
+                html += `${tab[0][next]}</br>`
+
+            }
+            // html += `</p>`
+            // html += `<p>`
+
+            // html += `</p>`
+            console.log(n)
+            document.body.innerHTML += html + `</pre>`
+        }
+        spiralEncrypt(txt)
+        // loreo
+        // labmo
+        // b21io
+        // muspo
+        // ooooo
+        // n = 5
+
+        // i = 0
+        // (0, 0)
+        // kierunek prawo
+        // i = 1
+        // (4, 0)
+        </script>
+
+</body>
+
+</html>
