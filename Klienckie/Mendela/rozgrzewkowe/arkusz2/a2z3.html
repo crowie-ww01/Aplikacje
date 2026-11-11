@@ -1,11 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        img {
+            height: 130px;
+            width: 100px;
+        }
+    </style>
 </head>
+
 <body>
-    
+    <script>
+        let cyfra = 0
+        let html = ""
+        for (let i = 0; i < 3; i++) {
+            cyfra = Math.round(Math.random() * 2 + 1)
+            html = `<img id="${i}" src="./cyferki/${cyfra}.jpg" alt="${cyfra}"></img>`
+            document.body.innerHTML += html
+        }
+
+        let cyferki = document.getElementsByTagName("img")
+        for (let img of cyferki) {
+            img.addEventListener("click", function () {
+                console.log(img.getAttribute("src"))
+                console.log(cyfra)
+                let aktualnaCyfra = parseInt(this.alt)
+                if (aktualnaCyfra < 3) {
+                    nowaCyfra = aktualnaCyfra + 1
+                }
+                else {
+                    nowaCyfra = 1
+                }
+                this.src = `./cyferki/${nowaCyfra}.jpg`
+                this.alt = nowaCyfra
+                if (cyferki[0].alt == 3 && cyferki[1].alt == 1 && cyferki[2].alt == 3) {
+                    // alert("Poprawny kod!")
+                    setTimeout(() => {
+                        alert("Poprawny kod!")
+                    }, 10)
+                }
+            })
+        }
+
+
+    </script>
 </body>
+
 </html>
