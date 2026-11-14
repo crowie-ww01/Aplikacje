@@ -1,11 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
-    
+    <script>
+        let txt = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut congue iaculis blandit. Donec vestibulum pharetra nibh quis molestie. Aliquam eleifend sapien sit amet ligula semper dictum. Praesent quis lacus neque. Praesent tempor dignissim ipsum at euismod. Curabitur dictum ipsum nec sem luctus interdum. Curabitur molestie ipsum in orci commodo gravida. Maecenas sed scelerisque tortor, eu eleifend justo. Phasellus non aliquam turpis, nec cursus ante. Integer eu faucibus erat, vitae dignissim massa. Nullam porta ligula eget nibh convallis pellentesque. Phasellus ullamcorper purus mauris, quis vestibulum lacus lobortis eget. Donec non mauris in sapien sollicitudin molestie ultricies nec urna. Donec neque nibh, suscipit eget arcu et, euismod interdum tellus. Suspendisse ultrices, nisl sit amet auctor ornare, velit eros molestie enim, non vehicula velit nisl id dolor. Sed pretium ultrices urna, a ultrices metus lacinia eu."
+        function sentenceStats(txt) {
+            let zdania = txt.split(/[.?!]/).filter(element => element != "")
+            let zdaniaZnak = txt.split(/[?!]/).filter(element => element != "")
+            // let zdaniaZnak = txt.split(/[?!]/).filter(function (element) {
+            //     return element != ""
+            // })
+            let ile = 0
+
+            for (let zdanie of zdania) {
+                let slowo = zdanie.trim().split(" ")
+                console.log(slowo)
+                if (slowo.length > 5) {
+                    ile += 1
+                }
+            }
+            console.log(`ilość zdań: ${zdania.length}`)
+            console.log(`ilość zkończonych: ${zdaniaZnak.length - 1}`)
+            console.log(`ilość 5: ${ile}`)
+
+
+        }
+        sentenceStats(txt)
+    </script>
+
 </body>
+
 </html>
