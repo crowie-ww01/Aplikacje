@@ -1,11 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        .licznik {
+            text-align: center;
+            height: 40px;
+            width: 100px;
+        }
+    </style>
 </head>
+
 <body>
-    
+    <input type="number" name="" id="wybrane" min="0" step="1">
+    <input type="submit" name="" id="start" value="START">
+    <br>
+    <br>
+    <input type="text" value="0" class="licznik" disabled id="licznik">
+    <script>
+        let wybrana = 0
+        document.getElementById("start").addEventListener("click", function () {
+            wybrana = document.getElementById("wybrane").value
+            if (wybrana > 0 && wybrana == parseInt(wybrana)) {
+                // console.log(wybrana)
+                let i = wybrana
+                document.getElementById("licznik").value = i
+                let interval = setInterval(() => {
+                    if (i > 0) {
+                        i = i - 1
+                        document.getElementById("licznik").value = i
+                    }
+                    else if (i == 0) {
+                        clearInterval(interval)
+
+                    }
+                }, 300)
+            }
+            else {
+                console.log("nieprawidłłowa wartość")
+            }
+
+        })
+    </script>
 </body>
+
 </html>
